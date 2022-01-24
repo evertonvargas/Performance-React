@@ -6,7 +6,7 @@ module.exports = () => {
   for(let i = 0; i < 1000; i++) {
     data.products.push({
       id: i + 1,
-      name: `Product ${i + 1}`,
+      name: `Produto ${i + 1}`,
       price: i * 10,
     })
   }
