@@ -1,5 +1,6 @@
 /*
 useMemo é usado qnd temos algo que consome muito processamento e o resultado não é alterado a cada renderização
+Serve para memorizar um valor
 Ex: cálculo
 */
 
@@ -12,9 +13,10 @@ interface SearchResultProps {
     price: number;
     name: string;
   }>
+  onAddToWishList: (id: number) => void;
 }
 
-export function SearchResults({results}: SearchResultProps){
+export function SearchResults({results, onAddToWishList}: SearchResultProps){
   // resultado não se altera e consome processamento toda vez
   const totalPrice = useMemo(() => {
     return results.reduce((acc, product) => {
@@ -26,9 +28,9 @@ export function SearchResults({results}: SearchResultProps){
     <div>
       <h2>Total: {totalPrice}</h2>
 
-      {results.map((product, index) => {
+      {results.map((product) => {
         return(
-          <ProductItem key={index} product={product} />
+          <ProductItem key={product.id} onAddToWishList={onAddToWishList} product={product} />
         );
       })}
     </div>

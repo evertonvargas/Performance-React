@@ -17,14 +17,16 @@ interface ProductItemProps {
     price: number;
     name: string;
   }
+  onAddToWishList: (id: number) => void;
 }
 
 //1 forma de usar o memo
 
-function ProductItemComponent({product}: ProductItemProps) {
+function ProductItemComponent({product, onAddToWishList}: ProductItemProps) {
   return (
     <div>
       <p>{product.name} - <strong>{product.price}</strong></p>
+      <button onClick={()=> onAddToWishList(product.id)}>Add to wishlist</button>
     </div>
   );
 }
